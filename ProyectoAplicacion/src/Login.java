@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,7 +21,7 @@ public class Login extends JFrame {
 
 	private static JPanel contentPane;
 	private JTextField txtUsuario;
-	private JTextField txtPassword;
+	private JPasswordField passwdField;
 	private static Connection conection;
 	/**
 	 * Launch the application.
@@ -81,11 +82,11 @@ public class Login extends JFrame {
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
-		txtPassword = new JTextField();
-		txtPassword.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		txtPassword.setBounds(150, 110, 150, 50);
-		contentPane.add(txtPassword);
-		txtPassword.setColumns(10);
+		passwdField = new JPasswordField();
+		passwdField.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		passwdField.setBounds(150, 110, 150, 50);
+		contentPane.add(passwdField);
+		passwdField.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
@@ -93,7 +94,7 @@ public class Login extends JFrame {
 				JOptionPane.showMessageDialog(contentPane, "Conectando...");
 			
 				String consulta2 = "select * from clientes where Usuario='"
-						+ txtUsuario.getText() + "' AND Password='" + txtPassword.getText() + "'";
+						+ txtUsuario.getText() + "' AND Password='" + passwdField.getText() + "'";
 				
 				try {
 					Statement consulta = conection.createStatement();
